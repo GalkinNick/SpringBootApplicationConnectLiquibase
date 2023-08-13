@@ -17,7 +17,6 @@ public class Basket {
         this();
         this.limit = limit;
     }
-
     public Basket(String items, int totalPrice) {
         this();
         this.items = this.items + items;
