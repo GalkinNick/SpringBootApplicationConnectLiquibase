@@ -8,7 +8,7 @@ public class MainElevator {
 
             int floor = new Scanner(System.in).nextInt();
             elevator.move(floor);
-                System.out.println(elevator.getCurrentFloor());
+            //  System.out.println(elevator.getCurrentFloor());
         }
     }
 }
