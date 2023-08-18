@@ -9,10 +9,8 @@ public class Elevator {
         this.minFloor = minFloor;
     }
 
-
-
     private void MoveDown() {
-        currentFloor = currentFloor > maxFloor ? currentFloor - 1 : currentFloor;
+        currentFloor = currentFloor > minFloor ? currentFloor - 1 : currentFloor;
     }
 
     private void MoveUp() {
