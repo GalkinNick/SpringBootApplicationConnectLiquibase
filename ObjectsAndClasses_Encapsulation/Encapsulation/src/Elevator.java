@@ -14,7 +14,7 @@ public class Elevator {
     }
 
     private void MoveUp() {
-        currentFloor = currentFloor < maxFloor ? currentFloor + 1 : currentFloor;
+        currentFloor = currentFloor < maxFloor ? currentFloor + 1 : currentFloor; //new new
     }
 
 
