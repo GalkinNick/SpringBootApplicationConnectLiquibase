@@ -1,11 +1,12 @@
 public class Basket {
 
-    private static int count = 0; // test //
+    private static int count = 0;
     private String items = "";
-    private int totalPrice = 0;
+    private static int totalPrice = 0;
     private int limit;
-
-    private double totalWeight;
+    private static double allSum;
+    private static double allCount;
+    private double totalWeight = 0;
 
     public Basket() {
         increaseCount(1);
@@ -17,6 +18,7 @@ public class Basket {
         this();
         this.limit = limit;
     }
+
     public Basket(String items, int totalPrice) {
         this();
         this.items = this.items + items;
@@ -32,7 +34,7 @@ public class Basket {
     }
 
     public void add(String name, int price) {
-        add(name, price, 1,0);
+        add(name, price,1,1);
     }
 
     public void add(String name, int price, int count, double weight) {
@@ -51,8 +53,10 @@ public class Basket {
         }
 
         items = items + "\n" + name + " - " +
-            count + " шт. - " + price + " " + weight * count;
+                count + " шт. - " + price + "руб" + " - " + weight + "г";
         totalPrice = totalPrice + count * price;
+        AllSum(price * count);
+        AllCount(count);
     }
 
     public void clear() {
@@ -66,7 +70,7 @@ public class Basket {
 
     public boolean contains(String name) {
         return items.contains(name);
-    }
+    } //
 
     public void print(String title) {
         System.out.println(title);
@@ -75,5 +79,27 @@ public class Basket {
         } else {
             System.out.println(items);
         }
+    }
+
+    public double getTotalWeight() {
+        return totalWeight;
+    }
+
+
+    public static void AllSum(int price) {
+        allSum  += price;
+
+    }
+    public static void AllCount(int count) {
+        allCount += count;
+
+    }
+
+    public static double getAllSum() {
+        return (allSum / count);
+    }
+
+    public static double getAllCount() {
+        return (allSum / allCount);
     }
 }
