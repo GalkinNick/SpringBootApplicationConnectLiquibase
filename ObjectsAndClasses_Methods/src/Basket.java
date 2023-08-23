@@ -1,6 +1,6 @@
 public class Basket {
 
-    private static int count = 0;
+    private static int count = 0; // test //
     private String items = "";
     private int totalPrice = 0;
     private int limit;
