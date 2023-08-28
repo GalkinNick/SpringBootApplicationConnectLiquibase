@@ -4,6 +4,12 @@ public class StorageOfInformation {
     private  int memoryCapacity ; //  объём памяти;
     protected  double StorageWeight ; // вес.
 
+    public StorageOfInformation(String storageType, int memoryCapacity, double storageWeight) {
+        StorageType = storageType;
+        this.memoryCapacity = memoryCapacity;
+        StorageWeight = storageWeight;
+    }
+
     public String getStorageType() {
         return StorageType;
     }

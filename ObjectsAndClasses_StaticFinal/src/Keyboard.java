@@ -4,6 +4,12 @@ public class Keyboard {
     protected  double KeyboardWeight ; // вес.
 
 
+    public Keyboard(String keyboardType, boolean illumination, double keyboardWeight) {
+        KeyboardType = keyboardType;
+        Illumination = illumination;
+        KeyboardWeight = keyboardWeight;
+    }
+
     public String getKeyboardType() {
         return KeyboardType;
     }

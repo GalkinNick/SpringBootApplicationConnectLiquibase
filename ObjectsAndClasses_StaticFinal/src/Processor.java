@@ -5,6 +5,12 @@ public class Processor {
     private  String manufacturer ; //  производитель;
     protected  double ProcessorWeight ; // вес.
 
+    public Processor(double frequency, int numberOfCores, String manufacturer, double processorWeight) {
+        this.frequency = frequency;
+        this.numberOfCores = numberOfCores;
+        this.manufacturer = manufacturer;
+        ProcessorWeight = processorWeight;
+    }
 
     public void setFrequency(double frequency) {
         this.frequency = frequency;

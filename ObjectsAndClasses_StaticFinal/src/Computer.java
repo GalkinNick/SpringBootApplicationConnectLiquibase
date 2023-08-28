@@ -35,6 +35,14 @@ public class Computer{
         return str;
     }
 
+    public String toString(){
+        String str = String.valueOf(processor.getFrequency()) +
+                processor.getManufacturer() +
+                processor.getManufacturer()+
+                processor.getNumberOfCores();
+        return str;
+    }
+
 
 
 

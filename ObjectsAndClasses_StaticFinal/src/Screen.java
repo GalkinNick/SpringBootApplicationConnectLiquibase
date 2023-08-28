@@ -4,6 +4,13 @@ public class Screen {
     private  double diagonal ; // диагональ
     private  String  ScreenType  ; // тип (IPS, TN, VA);
     protected  double ScreenWeight ; //  ;вес.
+
+    public Screen(double diagonal, String screenType, double screenWeight) {
+        this.diagonal = diagonal;
+        ScreenType = screenType;
+        ScreenWeight = screenWeight;
+    }
+
     public void setDiagonal(double diagonal) {
         this.diagonal = diagonal;
     }

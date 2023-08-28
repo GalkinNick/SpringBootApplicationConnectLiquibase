@@ -3,6 +3,12 @@ public class Memory {
     private  int MemoryVolume ; //  объём;
     protected  double MemoryWeight ; //  вес.
 
+    public Memory(String memoryType, int memoryVolume, double memoryWeight) {
+        MemoryType = memoryType;
+        MemoryVolume = memoryVolume;
+        MemoryWeight = memoryWeight;
+    }
+
     public int getMemoryVolume() {
         return MemoryVolume;
     }
