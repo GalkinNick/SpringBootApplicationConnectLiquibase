@@ -1,14 +1,37 @@
 public class Processor {
 
-    private static final double frequency = 3.6; //частота;
-    private static final int numberOfCores = 4; // количество ядер;
-    private static final String manufacturer = "intel"; //  производитель;
-    protected static final double ProcessorWeight = 0.1; // вес.
+    private  double frequency ; //частота;
+    private  int numberOfCores ; // количество ядер;
+    private  String manufacturer ; //  производитель;
+    protected  double ProcessorWeight ; // вес.
+
+
+    public void setFrequency(double frequency) {
+        this.frequency = frequency;
+    }
     public double getFrequency(){
         return frequency;
     }
+    public int getNumberOfCores() {
+        return numberOfCores;
+    }
+    public void setNumberOfCores(int numberOfCores) {
+        this.numberOfCores = numberOfCores;
+    }
+
     public double getProcessorWeight(){
         return ProcessorWeight;
+    }
+    public void setProcessorWeight(double processorWeight) {
+        ProcessorWeight = processorWeight;
+    }
+
+    public String getManufacturer() {
+        return manufacturer;
+    }
+
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
     }
 
 }

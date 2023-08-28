@@ -1,8 +1,30 @@
 public class Keyboard {
-    private static final String KeyboardType = "Game"; //тип;
-    private static final boolean Illumination = false; //наличие подсветки;
-    protected static final double KeyboardWeight = 17.4; // вес.
+    private  String KeyboardType ; //тип;
+    private boolean Illumination ; //наличие подсветки;
+    protected  double KeyboardWeight ; // вес.
 
 
+    public String getKeyboardType() {
+        return KeyboardType;
+    }
 
+    public void setKeyboardType(String keyboardType) {
+        KeyboardType = keyboardType;
+    }
+
+    public boolean isIllumination() {
+        return Illumination;
+    }
+
+    public void setIllumination(boolean illumination) {
+        Illumination = illumination;
+    }
+
+    public double getKeyboardWeight() {
+        return KeyboardWeight;
+    }
+
+    public void setKeyboardWeight(double keyboardWeight) {
+        KeyboardWeight = keyboardWeight;
+    }
 }
