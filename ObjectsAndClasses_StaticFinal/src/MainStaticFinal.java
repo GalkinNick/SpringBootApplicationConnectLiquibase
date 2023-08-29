@@ -11,7 +11,7 @@ public class MainStaticFinal {
 
     System.out.println("Общий вес всех комплектующих: "  + computer.SumWeight() + " г");
     System.out.println(computer.toString());
-   // System.out.println(computer.Info());
+   // System.out.println(computer.Info());//
 
     }
 
