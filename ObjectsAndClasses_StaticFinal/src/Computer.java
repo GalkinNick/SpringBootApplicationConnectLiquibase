@@ -13,11 +13,20 @@ public class Computer{
 
 
     public Computer(String name,
-                    String vendor
+                    String vendor,
+                    Processor processor,
+                    StorageOfInformation storageOfInformation,
+                    Memory memory,
+                    Screen screen,
+                    Keyboard keyboard
                     ){
         this.name = name;
         this.vendor = vendor;
-
+        this.processor = processor;
+        this.storageOfInformation = storageOfInformation;
+        this.memory = memory;
+        this.screen = screen;
+        this.keyboard = keyboard;
     }
     public double SumWeight(){
 
