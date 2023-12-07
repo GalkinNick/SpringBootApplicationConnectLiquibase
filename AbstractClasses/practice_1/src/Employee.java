@@ -1,8 +1,13 @@
 import java.util.ArrayList;
 import java.util.Collection;
 
-public interface Employee {
+public interface Employee extends Comparable<Employee> {
 
-    public double getMonthSalary();
+    public int getMonthSalary();
 
+
+    @Override
+    default int compareTo(Employee o){
+        return  Integer.compare(getMonthSalary(), o.getMonthSalary());
+    }
 }

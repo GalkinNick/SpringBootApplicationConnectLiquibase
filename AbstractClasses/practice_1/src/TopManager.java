@@ -21,9 +21,9 @@ public class TopManager implements  Employee{
 
 
     @Override
-    public double getMonthSalary() {
+    public int getMonthSalary() {
        if (sum > MAX_SALARY) {
-            return FIXED_SALARY + mounthIncome * BONUS;
+            return (int) ((int) FIXED_SALARY + mounthIncome * BONUS);
         }
         return 0;
     }

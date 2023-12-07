@@ -1,6 +1,6 @@
 public class Manager implements  Employee {
 
-    private final double FIXED_SALARY = 50000;
+    private final double FIXED_SALARY = 40000;
     private final double BONUS = 0.05;
     private double mounthIncome;
     private Company company;
@@ -20,7 +20,7 @@ public class Manager implements  Employee {
 
     }*/
     @Override
-    public double getMonthSalary() {
-        return FIXED_SALARY + mounthIncome * BONUS;
+    public int getMonthSalary() {
+        return (int) ((int)FIXED_SALARY + mounthIncome * BONUS);
     }
 }

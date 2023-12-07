@@ -1,7 +1,8 @@
 public class Operator implements  Employee{
-    private final double FIXED_SALARY = 50000;
+    private final int FIXED_SALARY = 46800;
+
     @Override
-    public double getMonthSalary() {
+    public int getMonthSalary() {
         return FIXED_SALARY;
     }
 }

@@ -28,7 +28,7 @@ public class Company {
 
     private void hireAll(Collection<Employee> employes) {employeesCompany.addAll(employes);};
 
-    private void fire (Employee employee){employeesCompany.remove(employee);};
+    public void fire (Employee employee){employeesCompany.remove(employee);};
 
 
     public double getIncome(){
@@ -41,13 +41,23 @@ public class Company {
 
 
    public ArrayList<Employee> getTopSalaryStaff(int count){
-       //  Collections.sort(employeesCompany);
-       return null;
+       ArrayList<Employee> topSalary = new ArrayList<>();
+       employeesCompany.sort(Collections.reverseOrder());
+
+       int i = 0;
+       for ( Employee emp : employeesCompany){
+           topSalary.add(emp);
+           i++;
+           if (i==count)break;
+       }
+
+       return topSalary;
    }
 
    public ArrayList<Employee> getLowesSalaryStaff(int count){
+       // Comparator<Employee> comparator = Comparator.comparingDouble(obj -> obj.getArrayIncome());
        ArrayList<Employee> lowesSalary = new ArrayList<>();
-       employeesCompany.sort(Collections.reverseOrder());
+       Collections.sort(employeesCompany);
         int i = 0;
        for ( Employee emp : employeesCompany){
            lowesSalary.add(emp);
@@ -56,6 +66,7 @@ public class Company {
        }
 
         return lowesSalary;
+
 
    }
 
