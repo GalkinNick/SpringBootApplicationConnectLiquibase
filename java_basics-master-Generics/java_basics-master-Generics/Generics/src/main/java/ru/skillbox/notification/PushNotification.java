@@ -1,17 +1,15 @@
 package ru.skillbox.notification;
 
+import lombok.AllArgsConstructor;
+
+@AllArgsConstructor
 public class PushNotification implements Notification{
 
-    String emoji = "\uD83D\uDC4B";
-    String message;
-    String title;
-    String account;
-    public PushNotification(String Message, String Title, String Account) {
-        this.message = Message;
-        this.title = Title;
-        this.account = Account;
-    }
 
+    private String message;
+    private String title;
+    private String account;
+    private final String emoji = "\uD83D\uDC4B";
     @Override
     public String formattedMessage() {
         return "account: " + account + "\n" +
