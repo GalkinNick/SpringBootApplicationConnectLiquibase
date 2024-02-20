@@ -1,12 +1,15 @@
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.List;
+import java.util.Objects;
 
 
 public class Main {
@@ -18,13 +21,44 @@ public class Main {
         JsonParse jsonParse = new JsonParse();
         MetroStation metroStation = new MetroStation();
         MetroLine metroLine = new MetroLine();
+        // поиск линии и номера
         metroLine.LineName(htmlFile);
 
+        /*париснг и поиск хтмл файла
+         */
         jsonParse.JsonStation(metroStation.StationName(htmlFile));
+        metroStation.getListStation().forEach(s-> System.out.println(s));
         jsonParse.JsonLine(metroLine);
 
+        /*поиcк файлов из папки
+         */
         SearchFile searchFile = new SearchFile();
         searchFile.Searches(new File("C:\\Users\\svish\\Downloads\\stations-data"));
+        //searchFile.GetJSONList();
+        //searchFile.GetCSVList();
+
+
+        /*преобразование файла джексон в класс
+        */
+        String json = Files.readString(Paths.get("C:\\Users\\svish\\Downloads\\stations-data\\data\\7\\1\\depths-2.json"));
+        ObjectMapper objectMapper = new ObjectMapper();
+        objectMapper.registerModule(new JavaTimeModule());
+        List<JsonClass> jsClass = objectMapper.readValue(json, new TypeReference<List<JsonClass>>() {});
+        //jsClass.forEach(jsonClass -> System.out.println(jsonClass.getStation_name()));
+
+        /*преобразование файла csv в класс
+         */
+        CSVClass csvClass = new CSVClass();
+        csvClass.CSVParse("C:\\Users\\svish\\Downloads\\stations-data\\data\\9\\6\\dates-3.csv");
+        //csvClass.GetName();
+
+        /*
+         */
+        ObjectMapper objectMap = new ObjectMapper();
+        MapJson mapJson = new MapJson();
+        //List<MapJson> jsonList = objectMap.readValue(new File("lib\\station.json"), new TypeReference<List<MapJson>>(){});
+
+
     }
 
     private static String Parse(String str){

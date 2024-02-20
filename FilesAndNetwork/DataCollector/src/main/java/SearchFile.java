@@ -28,4 +28,12 @@ public class SearchFile {
         }
     }
 
+    public void GetJSONList(){
+        listJson.forEach(list -> System.out.println(list));
+    }
+
+    public void GetCSVList(){
+        listCSV.forEach(list -> System.out.println(list));
+    }
+
 }
