@@ -27,7 +27,7 @@ public class Main {
         /*париснг и поиск хтмл файла
          */
         jsonParse.JsonStation(metroStation.StationName(htmlFile));
-        metroStation.getListStation().forEach(s-> System.out.println(s));
+        //metroStation.getListStation().forEach(s-> System.out.println(s));
         jsonParse.JsonLine(metroLine);
 
         /*поиcк файлов из папки
@@ -55,8 +55,13 @@ public class Main {
         /*
          */
         ObjectMapper objectMap = new ObjectMapper();
-        MapJson mapJson = new MapJson();
-        //List<MapJson> jsonList = objectMap.readValue(new File("lib\\station.json"), new TypeReference<List<MapJson>>(){});
+        String jsonLine = Files.readString(Paths.get("lib\\lines.json"));
+        String jsonStation = Files.readString(Paths.get("lib\\station.json"));
+        objectMap.registerModule(new JavaTimeModule());
+        List<MapJson> listMapjson = objectMap.readValue(jsonLine, new TypeReference<List<MapJson>>(){});
+        List<MapJson> listMapjson1 = objectMap.readValue(jsonStation, new TypeReference<List<MapJson>>(){});
+        System.out.println(jsonStation);
+
 
 
     }
