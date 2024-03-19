@@ -73,6 +73,7 @@ public class Main {
         Student student = session.get(Student.class, 1);
         System.out.println(student.getAge());*/
 
+        /// в этом месте возникает ошибка при получении значения даты
         /*PurchaseList purchaseList = session.get(PurchaseList.class, 1);
         System.out.println(purchaseList.getSubscriptionDate());*/
 
