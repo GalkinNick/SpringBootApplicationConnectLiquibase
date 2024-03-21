@@ -9,6 +9,7 @@ import org.hibernate.boot.Metadata;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
+import javax.xml.crypto.Data;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -31,28 +32,25 @@ public class Main {
         float value;
 
         try {
-            Connection connection = DriverManager.getConnection(url,user,pass);
+            Connection connection = DriverManager.getConnection(url, user, pass);
 
             Statement statement = connection.createStatement();
 
 
-            ResultSet resultSet = statement.executeQuery("SELECT pl.course_name, MONTH(pl.subscription_date) as month  FROM PurchaseList pl" +
-                    " WHERE pl.course_name = \"Веб-разработчик c 0 до PRO\" ORDER BY pl.subscription_date;");
+            ResultSet resultSet = statement.executeQuery("SELECT course_name, COUNT(course_name)/(MAX(MONTH(subscription_date)) - MIN(MONTH(subscription_date))) AS number \n" +
+                    "FROM PurchaseList \n" +
+                    "GROUP BY course_name");
 
 
-            while (resultSet.next()){
-                int month = resultSet.getInt("month");
-                monthList.add(month);
+            while (resultSet.next()) {
+
+                String mon = resultSet.getString("course_name");
+                String months = resultSet.getString("number");
+                System.out.println(mon + " - " + months);
 
             }
 
-            value = (float) monthList.size() / monthList.get(monthList.size()-1);
-
-            System.out.println(monthList.size());
-            System.out.println(monthList.get(monthList.size()-1));
-            System.out.println(value);
-
-        } catch (Exception ex){
+        } catch (Exception ex) {
             ex.printStackTrace();
         }
 
