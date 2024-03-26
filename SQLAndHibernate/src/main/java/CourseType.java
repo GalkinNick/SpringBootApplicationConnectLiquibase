@@ -1,8 +1,7 @@
 public enum CourseType {
-    DESIGN,
-    PROGRAMMING,
-    MARKETING,
-    MANAGEMENT,
-    BUSINESS
+    design,
+    programming,
+    marketing,
+    management,
+    business
 }
-

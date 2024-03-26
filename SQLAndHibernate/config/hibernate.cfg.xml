@@ -5,7 +5,7 @@
     <session-factory>
         <!-- JDBC Database connection settings -->
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.url">jdbc:mysql://localhost:3307/skillbox?useSSL=false</property>
+        <property name="connection.url">jdbc:mysql://localhost:3307/courses?useSSL=false</property>
         <property name="connection.username">root</property>
         <property name="connection.password">testtest</property>
         <!-- JDBC connection pool settings ... using built-in test pool -->
@@ -19,9 +19,13 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">validate</property>
 
-        <mapping class="Course"></mapping>
-        <mapping class="Teacher"></mapping>
-        <mapping class="Student"></mapping>
+        <mapping class="Courses"></mapping>
+        <mapping class="Subscriptions"></mapping>
+        <mapping class="Students"></mapping>
+        <mapping class="Teachers"></mapping>
         <mapping class="PurchaseList"></mapping>
+        <mapping class="LinkedPurchaseList"></mapping>
+
+
     </session-factory>
 </hibernate-configuration>
