@@ -8,20 +8,19 @@ import jakarta.persistence.Table;
 public class LinkedPurchaseList {
 
     @EmbeddedId
-    private SubscriptionKey id;
-
+    private PurchaseListKey id;
     @Column(name = "student_id", insertable = false, updatable = false)
     private int student_id;
     @Column(name = "course_id",insertable = false, updatable = false)
     private int course_id;
-    public SubscriptionKey getId() {
+
+    public PurchaseListKey getId() {
         return id;
     }
 
-    public void setId(SubscriptionKey id) {
+    public void setId(PurchaseListKey id) {
         this.id = id;
     }
-
     public int getStudent_id() {
         return student_id;
     }
@@ -37,6 +36,5 @@ public class LinkedPurchaseList {
     public void setCourse_id(int course_id) {
         this.course_id = course_id;
     }
-
 
 }

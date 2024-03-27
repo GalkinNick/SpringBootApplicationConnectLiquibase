@@ -34,22 +34,17 @@ public class Main {
 
     private static void QueryCourses(CriteriaBuilder builder, Session session){
 
+        //работающий запрос для записи в таблицу linkedPurchaseList
+        String hql = "INSERT INTO courses.linkedpurchaselist (student_id, course_id) SELECT s.id ,  c.id\n" +
+                "\tFROM courses.purchaselist p\n" +
+                "    JOIN courses.students s \n" +
+                "    JOIN courses.courses c";
 
 
-        String hql = "INSERT INTO linkedpurchaselist (student_id, course_id)" +
-                "SELECT student_name, course_name FROM purchaselist";
-        Query queryt = session.createQuery(hql);
-        int result = queryt.executeUpdate();
-        System.out.println("Rows affected: " + result);
+        List<LinkedPurchaseList> linkedPurchaseLists  = session.createQuery(hql).getResultList();
+        for (LinkedPurchaseList o : linkedPurchaseLists){
+            System.out.println(o.getStudent_id() + " - " + o.getCourse_id());
+        }
 
-
-
-
-        CriteriaQuery<LinkedPurchaseList> query = builder.createQuery(LinkedPurchaseList.class);
-        Root<LinkedPurchaseList> root = query.from(LinkedPurchaseList.class);
-        query.select(root);
-
-        List<LinkedPurchaseList> purchaseLists = session.createQuery(query).getResultList();
-        purchaseLists.forEach(p -> System.out.println(p.getStudent_id() + " - " + p.getCourse_id()));
     }
 }
