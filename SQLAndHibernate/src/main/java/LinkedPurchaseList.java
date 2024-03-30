@@ -10,9 +10,9 @@ public class LinkedPurchaseList {
     @EmbeddedId
     private PurchaseListKey id;
     @Column(name = "student_id", insertable = false, updatable = false)
-    private int student_id;
+    private int studentId;
     @Column(name = "course_id",insertable = false, updatable = false)
-    private int course_id;
+    private int courseId;
 
     public PurchaseListKey getId() {
         return id;
@@ -21,20 +21,20 @@ public class LinkedPurchaseList {
     public void setId(PurchaseListKey id) {
         this.id = id;
     }
-    public int getStudent_id() {
-        return student_id;
+    public int getStudentId() {
+        return studentId;
     }
 
-    public void setStudent_id(int student_id) {
-        this.student_id = student_id;
+    public void setStudentId(int studentId) {
+        this.studentId = studentId;
     }
 
-    public int getCourse_id() {
-        return course_id;
+    public int getCourseId() {
+        return courseId;
     }
 
-    public void setCourse_id(int course_id) {
-        this.course_id = course_id;
+    public void setCourseId(int courseId) {
+        this.courseId = courseId;
     }
 
 }

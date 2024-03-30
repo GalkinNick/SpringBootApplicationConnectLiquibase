@@ -16,7 +16,7 @@ public class Courses {
     @Column(name = "teacher_id")
     private int teacherId;
     @Column(name = "students_count")
-    private int studentsCount;
+    private Integer studentsCount;
     private int price;
     @Column(name = "price_per_hour")
     private float pricePerHour;
@@ -68,11 +68,11 @@ public class Courses {
         this.teacherId = teacherId;
     }
 
-    public int getStudentsCount() {
+    public Integer getStudentsCount() {
         return studentsCount;
     }
 
-    public void setStudentsCount(int studentsCount) {
+    public void setStudentsCount(Integer studentsCount) {
         this.studentsCount = studentsCount;
     }
 

@@ -7,11 +7,15 @@ import java.util.Date;
 public class PurchaseList {
     @EmbeddedId
     private PurchaseListKey id;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn(name = "student_name")
+
+    //@PrimaryKeyJoinColumn(name = "student_name")
+    //@OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name = "student_name",insertable=false, updatable=false)
     private String studentName;
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @PrimaryKeyJoinColumn(name = "course_name")
+
+    //@PrimaryKeyJoinColumn(name = "course_name")
+   // @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @Column(name = "course_name",insertable=false, updatable=false)
     private String courseName;
     private int price;
     @Column(name = "subscription_date")
