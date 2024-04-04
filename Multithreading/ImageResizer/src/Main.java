@@ -4,9 +4,10 @@ import java.io.File;
 
 public class Main {
 
+    private static  int newWidth = 100;
     public static void main(String[] args) {
-        String srcFolder = "/users/sortedmap/Desktop/src";
-        String dstFolder = "/users/sortedmap/Desktop/dst";
+        String srcFolder = "C:\\Users\\svish\\Desktop\\src";
+        String dstFolder = "C:\\Users\\svish\\Desktop\\dsr";
 
         File srcDir = new File(srcFolder);
 
@@ -14,38 +15,18 @@ public class Main {
 
         File[] files = srcDir.listFiles();
 
-        try {
-            for (File file : files) {
-                BufferedImage image = ImageIO.read(file);
-                if (image == null) {
-                    continue;
-                }
+        int middle = files.length / 2;
+        // создание копий для исходных файлов
+        File[] files1 = new File[middle];
+        System.arraycopy(files, 0 , files1, 0, middle);
+        // создание потоков
+        ImageResizer resizer = new ImageResizer(files1, newWidth, dstFolder, start);
+        // запуск потоков
+        resizer.start();
 
-                int newWidth = 300;
-                int newHeight = (int) Math.round(
-                    image.getHeight() / (image.getWidth() / (double) newWidth)
-                );
-                BufferedImage newImage = new BufferedImage(
-                    newWidth, newHeight, BufferedImage.TYPE_INT_RGB
-                );
-
-                int widthStep = image.getWidth() / newWidth;
-                int heightStep = image.getHeight() / newHeight;
-
-                for (int x = 0; x < newWidth; x++) {
-                    for (int y = 0; y < newHeight; y++) {
-                        int rgb = image.getRGB(x * widthStep, y * heightStep);
-                        newImage.setRGB(x, y, rgb);
-                    }
-                }
-
-                File newFile = new File(dstFolder + "/" + file.getName());
-                ImageIO.write(newImage, "jpg", newFile);
-            }
-        } catch (Exception ex) {
-            ex.printStackTrace();
-        }
-
-        System.out.println("Duration: " + (System.currentTimeMillis() - start));
+        File[] files2 = new File[files.length - middle];
+        System.arraycopy(files, middle, files2,0, files2.length);
+        ImageResizer resizer1 = new ImageResizer(files2, newWidth, dstFolder, start);
+        resizer1.start();
     }
 }
