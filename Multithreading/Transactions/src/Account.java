@@ -1,7 +1,13 @@
 public class Account {
-
     private long money;
     private String accNumber;
+    private boolean isWorked;
+
+    public Account(long money, String accNumber, boolean isWorked) {
+        this.money = money;
+        this.accNumber = accNumber;
+        this.isWorked = isWorked;
+    }
 
     public long getMoney() {
         return money;
@@ -17,5 +23,13 @@ public class Account {
 
     public void setAccNumber(String accNumber) {
         this.accNumber = accNumber;
+    }
+
+    public boolean isWorked() {
+        return isWorked;
+    }
+
+    public void setWorked(boolean blocked) {
+        isWorked = blocked;
     }
 }
