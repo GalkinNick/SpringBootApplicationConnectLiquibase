@@ -25,10 +25,12 @@ public class Bank {
      * метод isFraud. Если возвращается true, то делается блокировка счетов (как – на ваше
      * усмотрение)
      */
-    public void transfer(String fromAccountNum, String toAccountNum, long amount){
+    public synchronized void transfer(String fromAccountNum, String toAccountNum, long amount){
         try {
-            if (!accounts.get(fromAccountNum).isWorked() || !accounts.get(toAccountNum).isWorked())
+            if (!accounts.get(fromAccountNum).isWorked() || !accounts.get(toAccountNum).isWorked()) {
                 System.out.println("Аккаунты заблокированны");
+                return;
+            }
             else {
                 if (fromAccountNum == accounts.get(fromAccountNum).getAccNumber()) {
                     if (amount < accounts.get(fromAccountNum).getMoney()) {
@@ -49,16 +51,21 @@ public class Bank {
         }
     }
 
-    private void DoTransaction(String fromAccountNum, String toAccountNum, long amount){
+    private synchronized void DoTransaction(String fromAccountNum, String toAccountNum, long amount){
         long i = accounts.get(fromAccountNum).getMoney();
         i -= amount;
         long j = accounts.get(toAccountNum).getMoney();
         j += amount;
         Account fromAccount = new Account(i, fromAccountNum, true);
         Account toAccount = new Account(j, toAccountNum, true);
-        accounts.put(fromAccountNum, fromAccount);
-        accounts.put(toAccountNum, toAccount);
-        System.out.println("Успешно произведена операция");
+        synchronized (fromAccount){
+            synchronized (toAccount){
+                accounts.put(fromAccountNum, fromAccount);
+                accounts.put(toAccountNum, toAccount);
+                System.out.println("Успешно произведена операция");
+            }
+        }
+
     }
 
     private void BlockAccount(String fromAccountNum, String toAccountNum){
